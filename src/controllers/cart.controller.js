@@ -98,7 +98,7 @@ const getCart = async (req, res) => {
         path: "items",
         populate: { path: "product", model: "Product" },
       });
-    } else {
+    } else if (cartId) {
       cart = await Cart.findOne({ _id: cartId }).populate({
         path: "items",
         populate: { path: "product", model: "Product" },
