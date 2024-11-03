@@ -28,7 +28,7 @@ const createCheckoutSession = async (req, res) => {
     ui_mode: "embedded",
     line_items: po,
     mode: "payment",
-    return_url: `http://localhost:5173/return?session_id={CHECKOUT_SESSION_ID}`,
+    return_url: `https://ecommerce-frontend-gilt-eight.vercel.app/return?session_id={CHECKOUT_SESSION_ID}`,
     metadata: [orderId, cart._id],
   });
 
