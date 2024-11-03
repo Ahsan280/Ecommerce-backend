@@ -38,6 +38,7 @@ export const isAuthenticated = async (req, res, next) => {
     const token =
       req.cookies?.accessToken ||
       req.header("Authorization")?.replace("Bearer", "");
+    console.log(token);
 
     const incomingRefreshToken = req.cookies?.refreshToken;
     if (!token) {
