@@ -44,3 +44,29 @@ app.use("/api/v1/product", productRouter);
 app.use("/api/v1/cart", cartRouter);
 app.use("/api/v1/order", orderRouter);
 app.use("/api/v1/payment", paymentRouter);
+
+app.get("/", (req, res) => {
+  res.send("Server is up and running!");
+});
+
+// Keep-alive ping code
+const url = process.env.PRODUCTION_URL;
+const interval = 60000; // Ping every 60 seconds
+
+function keepAlive() {
+  axios
+    .get(url)
+    .then((response) => {
+      console.log(
+        `Pinged at ${new Date().toISOString()}: Status Code ${response.status}`
+      );
+    })
+    .catch((error) => {
+      console.error(
+        `Error pinging at ${new Date().toISOString()}:`,
+        error.message
+      );
+    });
+}
+
+setInterval(keepAlive, interval);
